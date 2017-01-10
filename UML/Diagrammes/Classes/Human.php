@@ -44,7 +44,7 @@ abstract class Human implements Eatable
         $this->hairColor = (string) $hairColor;
         return $this;
     }
-    
+
     public function eat()
     {
         echo "Je mange comme un " . __CLASS__;
