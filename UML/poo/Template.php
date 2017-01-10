@@ -31,11 +31,13 @@ class Template
 
     public function render(array $data)
     {
+        // $data['version'] = '1.0.0';
+        // echo $version
+        // 
         //foreach ($data as $var => $value) {
         //    $$var = $value;
         //}
 
-        
         // ob == output buffering
 
         ob_start();
