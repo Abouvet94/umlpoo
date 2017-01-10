@@ -10,6 +10,7 @@ class Arena
     private $name;
     private $capacity = 0;
     private $animations = [];
+
     public function getName()
     {
         return $this->name;
@@ -37,9 +38,14 @@ class Arena
         return $this;
     }
 
-    public function addAnimations(Animation $animations)
+    public function addAnimations(Animation $animation)
     {
-        $this->animations = $animations;
+        $this->animations[] = $animation;
         return $this;
-    }    
+    }
+
+    public function show()
+    {
+        
+    }
 }
