@@ -7,6 +7,8 @@ try {
     echo $e->getCode() . '<br>';
     echo $e->getFile() . '<br>';
     echo $e->getLine() . '<br>';
+    
+    $log->write($e);
 }
 
 echo "hello";
