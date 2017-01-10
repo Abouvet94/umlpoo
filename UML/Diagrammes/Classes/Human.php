@@ -6,7 +6,7 @@
  * @file Human.php
  * @author dev
  */
-class Human
+abstract class Human implements Eatable
 {
     private $height = 0;
     private $weight = 0;
@@ -43,5 +43,10 @@ class Human
     {
         $this->hairColor = (string) $hairColor;
         return $this;
+    }
+    
+    public function eat()
+    {
+        echo "Je mange comme un " . __CLASS__;
     }
 }
