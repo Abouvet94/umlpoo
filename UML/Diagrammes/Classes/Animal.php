@@ -15,6 +15,7 @@ abstract class Animal
     public function setName($name)
     {
         $this->name = (string) $name;
+        return $this;
     }
 
     public function getName()
@@ -25,6 +26,7 @@ abstract class Animal
     public function setColor($color)
     {
         $this->color = (string) $color;
+        return $this;
     }
 
     public function getColor()
@@ -35,6 +37,7 @@ abstract class Animal
     public function setWeight($weight)
     {
         $this->weight = (int) $weight;
+        return $this;
     }
 
     public function getWeight()
