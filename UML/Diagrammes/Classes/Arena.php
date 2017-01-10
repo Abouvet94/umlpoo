@@ -46,6 +46,8 @@ class Arena
 
     public function show()
     {
-        
+        foreach ($this->animations as $animation) {
+            $animation->animate();
+        }
     }
 }

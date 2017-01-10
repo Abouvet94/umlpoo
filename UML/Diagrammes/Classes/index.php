@@ -5,6 +5,7 @@ ini_set('display_errors', true);
 // /home/dev/Worspace/Web/UML/Digrammes/Classes/index.php
 
 require 'Eatable.php';
+require 'Flyer.php';
 require 'Animal.php';
 require 'Human.php';
 require 'Feline.php';
@@ -15,6 +16,9 @@ require 'Tiger.php';
 require 'Man.php';
 require 'Woman.php';
 require 'Farme.php';
+require 'Animation.php';
+require 'Arena.php';
+require 'FlightAnimation.php';
 
 $tiger = new Tiger;
 $tiger->setName('Sharkan')->getName();
@@ -33,4 +37,12 @@ $farme->addEatable($tiger)
 
 $farme->eatAll();
 
+$flightAnime = new FlightAnimation();
+$flightAnime->add($eagle);
 
+$arena = new Arena();
+$arena->setName('Spartacus')
+      ->setCapacity(1000)
+      ->addAnimations($flightAnime);
+
+$arena->show();
