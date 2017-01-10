@@ -36,7 +36,6 @@ class Logger
                 'code'     => $part[2],
                 'line'     => $part[3],
                 'file'     => $part[4],
-                
             );
         }
 
