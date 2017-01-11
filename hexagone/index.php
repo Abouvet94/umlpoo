@@ -27,6 +27,27 @@ $products = array(
     ),    
 );
 
+$decorator = null;
+$total = 0;
+
+foreach ($_POST as $name => $options) {
+    $classname = '\\Ipssi\\Starbuck\\' . $name;
+    $product = new $classname();
+
+    foreach ($options as $option) {
+        $decoratorClass = '\\Ipssi\\Starbuck\\' . $option;
+        $decorator = new $decoratorClass($product);
+        $price = $decorator->getPrice();
+        $total += $price;
+        echo $price .'<br>';
+    }
+}
+
+echo '<img width="200" src="http://www.lacitedesangevins.com/wp-content/uploads/2016/01/starbucks_hz.png">';
+echo '<br><br>';
+echo 'Un café acheter un fauteuil pour la journée !<br>';
+echo 'total : ' . $total . '<br>';
+
 ?>
 
 <form action="" method="POST">
@@ -35,7 +56,7 @@ $products = array(
         <input type="hidden" name="<?php $name ?>">
 
         <?php foreach ($options as $option) : ?>
-        <input type="checkbox" name="<?php echo $name ?>[]"> <?php echo $option ?>
+        <input type="checkbox" name="<?php echo $name ?>[]" value="<?php echo $option ?>"> <?php echo $option ?><br>
         <?php endforeach; ?>
 
     <?php endforeach; ?>
