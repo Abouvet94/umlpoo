@@ -16,25 +16,27 @@ set_include_path(
 require 'Ipssi/Loader/ClassLoader.php';
 \Ipssi\Loader\ClassLoader::load();
 
-//$contact = new \Ipssi\Test\Contact();
-//$mock = new \Ipssi\Test\CRUDMock();
-//$mock2 = new \Ipssi\Test\CRUDMock();
+//$lemonde = new Ipssi\FeedNews\LeMonde();
+//$lefigaro = new Ipssi\FeedNews\LeFigaro();
 //
-//$mock->insert($contact);
-//$mock->find(0);
+//foreach ($lemonde->getAll() as $article) {
+//    echo $article['title'].'<br>';
+//}
 //
-//$mock2->insert($contact);
-//$mock2->find(0);
-//
-//echo \Ipssi\Test\CRUDMock::getCounter();
+//foreach ($lefigaro->findAll() as $article) {
+//    echo $article['title'].'<br>';
+//}
 
-//var_dump(\Ipssi\Session\Session::isStarted());
+$lefigaro = new Ipssi\GoodNews\LeFigaro();
 
-$session = new \Ipssi\Session\Session('toto');
-$session->set('ecole', 'ipssi');
+foreach ($lefigaro as $article) {
+    echo $article['title'].'<br>';
+}
 
-$session->ecole = 'ip-formation';
+$lefigaro->rewind();
 
-//echo $session->ecole;
-//echo $session->get('ecole');
-
+while($lefigaro->valid()) {
+    $article = $lefigaro->current();
+    echo $article['title'] . '<br>';
+    $lefigaro->next();
+}

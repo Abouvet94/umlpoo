@@ -2,11 +2,33 @@
 
 namespace Ipssi\Session;
 
-class Session
+class Session implements \ArrayAccess
 {
+    /**
+     * Cette propriété définie le nom de la session.
+     * 
+     * @var string 
+     */
     private $name;
+
+    /**
+     * isStarted permet de vérifier si la session
+     * a déjà ou pas été démarrée.
+     * 
+     * @static
+     * @var bool 
+     */
     private static $isStarted = false;
 
+    /**
+     * Construction de l'objet Session.
+     * 
+     * Démarre la session avec la possibilité de
+     * donner un nom en argument au constructeur.
+     * 
+     * @param  string $name
+     * @return void
+     */
     public function __construct($name = null)
     {
         if ($name !== null) {
@@ -18,6 +40,16 @@ class Session
             \session_start();
             self::$isStarted = true;
         }
+    }
+
+    public function __isset($name)
+    {
+        return $this->has($name);
+    }
+    
+    public function __unset($name)
+    {
+        $this->remove($name);
     }
 
     public function __get($name)
@@ -35,6 +67,11 @@ class Session
     public static function isStarted()
     {
         return self::$isStarted;
+    }
+
+    public function regenerateID()
+    {
+        return \session_regenerate_id();
     }
 
     public function has($key)
@@ -82,5 +119,25 @@ class Session
     {
         $this->name = (string) $name;
         return $this;
+    }
+
+    public function offsetExists($offset)
+    {
+        return $this->has($offset);
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->get($offset);
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        $this->set($offset, $value);
+    }
+
+    public function offsetUnset($offset)
+    {
+        $this->remove($offset);
     }
 }
