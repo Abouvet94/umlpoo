@@ -16,15 +16,23 @@ set_include_path(
 require 'Ipssi/Loader/ClassLoader.php';
 \Ipssi\Loader\ClassLoader::load();
 
-$contact = new \Ipssi\Test\Contact();
-$mock = new \Ipssi\Test\CRUDMock();
-$mock2 = new \Ipssi\Test\CRUDMock();
+//$contact = new \Ipssi\Test\Contact();
+//$mock = new \Ipssi\Test\CRUDMock();
+//$mock2 = new \Ipssi\Test\CRUDMock();
+//
+//$mock->insert($contact);
+//$mock->find(0);
+//
+//$mock2->insert($contact);
+//$mock2->find(0);
+//
+//echo \Ipssi\Test\CRUDMock::getCounter();
 
-$mock->insert($contact);
-$mock->find(0);
+var_dump(\Ipssi\Session\Session::isStarted());
 
-$mock2->insert($contact);
-$mock2->find(0);
+$session = new \Ipssi\Session\Session('toto');
+$session->set('ecole', 'ipssi');
 
-echo \Ipssi\Test\CRUDMock::getCounter();
+echo $session->get('ecole');
+echo $session->get('rien', 'quelque chose');
 
