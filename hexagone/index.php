@@ -16,41 +16,32 @@ set_include_path(
 require 'Ipssi/Loader/ClassLoader.php';
 \Ipssi\Loader\ClassLoader::load();
 
-//$lemonde = new Ipssi\FeedNews\LeMonde();
-//$lefigaro = new Ipssi\FeedNews\LeFigaro();
-//
-//foreach ($lemonde->getAll() as $article) {
-//    echo $article['title'].'<br>';
-//}
-//
-//foreach ($lefigaro->findAll() as $article) {
-//    echo $article['title'].'<br>';
-//}
 
-//$lefigaro = new Ipssi\GoodNews\LeFigaro();
-//
-//foreach ($lefigaro as $article) {
-//    echo $article['title'].'<br>';
-//}
-//
-//$lefigaro->rewind();
-//
-//while($lefigaro->valid()) {
-//    $article = $lefigaro->current();
-//    echo $article['title'] . '<br>';
-//    $lefigaro->next();
-//}
+$products = array(
+    'Chocolat' => array(
+        'Paille',
+    ),
+    'Cafe' => array(
+        'Creme',
+        'Paille',
+    ),    
+);
 
-$cafe = new Ipssi\Starbuck\Cafe();
-echo 'café '.$cafe->getPrice().'<br>';
+?>
 
-$creme = new \Ipssi\Starbuck\Creme($cafe);
-$chocolate = new Ipssi\Starbuck\Chocolat();
-$paille = new \Ipssi\Starbuck\Paille($creme);
+<form action="" method="POST">
+    <?php foreach ($products as $name => $options) : ?>
+        <h3><?php echo $name ?></h3>
+        <input type="hidden" name="<?php $name ?>">
 
-echo 'Tu vas banquer ' . $paille->getPrice() . '€';
+        <?php foreach ($options as $option) : ?>
+        <input type="checkbox" name="<?php echo $name ?>[]"> <?php echo $option ?>
+        <?php endforeach; ?>
 
+    <?php endforeach; ?>
 
+    <input type="submit" value="Commander">
+</form>
 
 
 
