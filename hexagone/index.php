@@ -13,9 +13,18 @@ set_include_path(
     get_include_path()
 );
 
-spl_autoload_register(function ($classname) {
-    $classname = str_replace('\\', DIRECTORY_SEPARATOR, $classname);
-    require $classname . '.php';
-});
+require 'Ipssi/Loader/ClassLoader.php';
+\Ipssi\Loader\ClassLoader::load();
 
-$hello = new \Ipssi\Test\Hello();
+$contact = new \Ipssi\Test\Contact();
+$mock = new \Ipssi\Test\CRUDMock();
+$mock2 = new \Ipssi\Test\CRUDMock();
+
+$mock->insert($contact);
+$mock->find(0);
+
+$mock2->insert($contact);
+$mock2->find(0);
+
+echo \Ipssi\Test\CRUDMock::getCounter();
+
