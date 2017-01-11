@@ -27,16 +27,34 @@ require 'Ipssi/Loader/ClassLoader.php';
 //    echo $article['title'].'<br>';
 //}
 
-$lefigaro = new Ipssi\GoodNews\LeFigaro();
+//$lefigaro = new Ipssi\GoodNews\LeFigaro();
+//
+//foreach ($lefigaro as $article) {
+//    echo $article['title'].'<br>';
+//}
+//
+//$lefigaro->rewind();
+//
+//while($lefigaro->valid()) {
+//    $article = $lefigaro->current();
+//    echo $article['title'] . '<br>';
+//    $lefigaro->next();
+//}
 
-foreach ($lefigaro as $article) {
-    echo $article['title'].'<br>';
-}
+$cafe = new Ipssi\Starbuck\Cafe();
+echo 'café '.$cafe->getPrice().'<br>';
 
-$lefigaro->rewind();
+$creme = new \Ipssi\Starbuck\Creme($cafe);
+$chocolate = new Ipssi\Starbuck\Chocolat();
+$paille = new \Ipssi\Starbuck\Paille($creme);
 
-while($lefigaro->valid()) {
-    $article = $lefigaro->current();
-    echo $article['title'] . '<br>';
-    $lefigaro->next();
-}
+echo 'Tu vas banquer ' . $paille->getPrice() . '€';
+
+
+
+
+
+
+
+
+
