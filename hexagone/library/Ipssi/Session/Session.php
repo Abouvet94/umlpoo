@@ -20,6 +20,18 @@ class Session
         }
     }
 
+    public function __get($name)
+    {
+        return $this->get($name);
+    }
+
+    public function __set($name, $value)
+    {
+        //echo $name, ' ', $value;
+        //$_SESSION[$name] = $value;
+        $this->set($name, $value);
+    }
+
     public static function isStarted()
     {
         return self::$isStarted;

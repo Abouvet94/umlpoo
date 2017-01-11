@@ -28,11 +28,13 @@ require 'Ipssi/Loader/ClassLoader.php';
 //
 //echo \Ipssi\Test\CRUDMock::getCounter();
 
-var_dump(\Ipssi\Session\Session::isStarted());
+//var_dump(\Ipssi\Session\Session::isStarted());
 
 $session = new \Ipssi\Session\Session('toto');
 $session->set('ecole', 'ipssi');
 
-echo $session->get('ecole');
-echo $session->get('rien', 'quelque chose');
+$session->ecole = 'ip-formation';
+
+//echo $session->ecole;
+//echo $session->get('ecole');
 
